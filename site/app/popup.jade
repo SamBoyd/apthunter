@@ -1,0 +1,13 @@
+.locationPopup
+  .picture
+    img(src=pic_urls[0], style="width: 70px")
+  ul.urls
+    - each page_url in page_urls
+      li
+        a(href=page_url)= page_url
+  .description
+    - each description in descriptions
+      p= description
+  .price
+    - each price in prices
+      strong= price
