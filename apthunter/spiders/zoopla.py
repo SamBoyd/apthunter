@@ -12,11 +12,18 @@ class ZooplaSpider(scrapy.Spider):
     name = 'zoopla'
     allowed_domains = ['zoopla.co.uk']
 
+# http://www.zoopla.co.uk/to-rent/property/3-bedrooms/oxford-circus/?duration=900&include_shared_accommodation=true
+    # &price_frequency=per_month&price_max=2250&price_min=1750&q=Oxford%20Circus%2C%20London
+    # &results_sort=newest_listings&search_source=refine&transport_type=walking_train
+
     start_urls = (
-        'http://www.zoopla.co.uk/to-rent/property/london/' + config.ZOOPLA_LOCATION +
+        'http://www.zoopla.co.uk/to-rent/property/3-bedrooms/' + config.ZOOPLA_LOCATION +
         '?duration=' + str(config.MAX_TRAVEL_TIME_SECONDS) +
-        '&price_frequency=per_week&price_max=' + str(math.ceil(config.MAX_PRICE_PER_WEEK * 4.3)) +
-        '&q=' + config.SEARCH_LOCATION + '&results_sort=newest_listings' +
+        '&price_frequency=per_month' +
+        '&price_max=' + str(config.Max_PRICE_PER_MONTH) +
+        '&price_min=' + str(config.MIN_PRICE_PER_MONTH) +
+        '&q=' + config.SEARCH_LOCATION +
+        '&results_sort=newest_listings' +
         '&search_source=travel-time&transport_type=walking_train',
     )
 

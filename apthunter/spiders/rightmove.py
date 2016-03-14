@@ -6,12 +6,26 @@ from apthunter import config
 import math
 
 
+#http://www.rightmove.co.uk/property-to-rent/find.html?searchType=RENT&locationIdentifier=STATION%5E6953&insId=1
+# &radius=1.0&minPrice=1750&maxPrice=2250&minBedrooms=3&maxBedrooms=3&displayPropertyType=
+# &maxDaysSinceAdded=3&sortByPriceDescending=&_includeLetAgreed=on&primaryDisplayPropertyType=
+# &secondaryDisplayPropertyType=&oldDisplayPropertyType=&oldPrimaryDisplayPropertyType=&letType=&letFurnishType=&houseFlatShare=false
+
+
+#http://www.rightmove.co.uk/property-to-rent/map.html
+# ?locationIdentifier=REGION%5E93980
+# &insId=1
+# &minPrice=2500
+# &maxPrice=3000
+# &minBedrooms=3
+# &maxBedrooms=3
+# &radius=5.0#_includeLetAgreed%3Don%26houseFlatShare%3Dfalse%26lastPersistLocId%3DREGION%255E93980%26locationIdentifier%3DREGION%255E93980%26maxBedrooms%3D3%26maxDaysSinceAdded%3D3%26maxPrice%3D2250%26minBedrooms%3D3%26minPrice%3D1750%26previousSearchLocation%3DWestminster%26radius%3D5.0%26searchLocation%3DWestminster%26searchType%3DRENT%26sortByNewestListing%3Dfalse%26sortType%3D6%26topMatchPersistRegIds%3D93980%26useLocationIdentifier%3Dfalse%26box%3D-0.33215%2C0.01117%2C51.41147%2C51.61353
 class RightmoveSpider(scrapy.Spider):
     name = 'rightmove'
     allowed_domains = ['rightmove.co.uk']
     start_urls = (
-        'http://www.rightmove.co.uk/property-to-rent/find.html' + 
-        '?searchType=RENT&locationIdentifier=' + config.RIGHTMOVE_POSTCODE + '&insId=1&radius=' + str(config.MAX_DISTANCE_MILES) +
+        'http://www.rightmove.co.uk/property-to-rent/find.html' +
+        '?searchType=RENT&locationIdentifier=' + config.RIGHTMOVE_POSTCODE + '&insId=1&radius=5.0' +
         '&minPrice=' + str(config.MIN_PRICE_PER_WEEK) +
         '&maxPrice=' + str(config.Max_PRICE_PER_MONTH) +
         '&minBedrooms=' + str(config.NUM_BEDROOMS) +

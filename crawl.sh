@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-SITES=(craigslist zoopla rightmove gumtree)
+SITES=( rightmove zoopla craigslist gumtree )
 
 for site in ${SITES[@]}; do
 	scrapy crawl $site -o $site.csv
